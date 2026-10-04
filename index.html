@@ -56,6 +56,8 @@ tbody tr:last-child td { border-bottom: 0; }
 tbody tr:hover td { background: var(--accent-soft); }
 td.name { font-weight: 700; }
 td.name small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+a.site { display: block; margin-top: 4px; font-weight: 600; font-size: 12px; text-decoration: none; overflow-wrap: anywhere; }
+a.site:hover { text-decoration: underline; }
 td.num { text-align: right; font-family: var(--font-data); font-variant-numeric: tabular-nums; white-space: nowrap; overflow-wrap: normal; }
 td.num .extra { display: block; font-family: var(--font-body); font-size: 12px; color: var(--muted); white-space: normal; }
 td.place .region { display: block; color: var(--muted); font-size: 12px; }
@@ -88,6 +90,7 @@ td.ev { min-width: 150px; }
   td.name { font-family: var(--font-display); font-weight: 500; font-size: 17px; padding-top: 10px; }
   td.name::before { display: none !important; }
   td.name small { font-family: var(--font-body); }
+  td.name a.site { display: block; font-family: var(--font-body); }
   td.num { grid-column: auto; text-align: left; white-space: normal; }
 }
 
@@ -138,7 +141,7 @@ footer { font-size: 12px; color: var(--muted); }
       </thead>
       <tbody>
         <tr class="best">
-          <td class="name">Жива Вода <small>SPA-готель 4*</small></td>
+          <td class="name">Жива Вода <small>SPA-готель 4*</small><a class="site" href="https://jivavoda.com.ua/" target="_blank" rel="noopener">jivavoda.com.ua ↗</a></td>
           <td class="place">смт Міжгір'я, вул. Набережна, 1<span class="region">Закарпатська обл.</span></td>
           <td>2 номери: Стандарт покращений 2+2 (2 990 ₴) + Економ (2 350 ₴)</td>
           <td class="num n7">37 380</td>
@@ -151,7 +154,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Невелике містечко. Зарядитися в Хусті (~50 км)</span></div></td>
         </tr>
         <tr>
-          <td class="name">Осоння Карпати</td>
+          <td class="name">Осоння Карпати<a class="site" href="https://osonnya.com/" target="_blank" rel="noopener">osonnya.com ↗</a></td>
           <td class="place">с. Ластівка, ~6 км від Східниці<span class="region">Львівська обл.</span></td>
           <td>Котедж 4+2 біля озера, 8 600 ₴ у будні / 9 100 ₴ у вихідні</td>
           <td class="num n7">61 200</td>
@@ -164,7 +167,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Найближче: Східниця (~6 км). За Booking.com зарядка є в Apartel Skhidnytsya</span></div></td>
         </tr>
         <tr>
-          <td class="name">Еко-курорт IZKI</td>
+          <td class="name">Еко-курорт IZKI<a class="site" href="https://izki.ua/" target="_blank" rel="noopener">izki.ua ↗</a></td>
           <td class="place">с. Ізки<span class="region">Закарпатська обл.</span></td>
           <td>Villa Deluxe на 6 осіб, 9 360 ₴</td>
           <td class="num">65 520</td>
@@ -177,7 +180,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Гірське село. Найближче: Міжгір'я (~20 км) або Хуст. Зарядитися перед підйомом</span></div></td>
         </tr>
         <tr>
-          <td class="name">Шале Грааль</td>
+          <td class="name">Шале Грааль<a class="site" href="https://chalegraal.com/" target="_blank" rel="noopener">chalegraal.com ↗</a></td>
           <td class="place">м. Трускавець<span class="region">Львівська обл.</span></td>
           <td>2 апартаменти + місце для 5-го, ~10 000 ₴</td>
           <td class="num">~70 000</td>
@@ -190,7 +193,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Найближче: Трускавець, Дрогобич (~10 км)</span></div></td>
         </tr>
         <tr>
-          <td class="name">Voevodyno</td>
+          <td class="name">Voevodyno<a class="site" href="https://voevodyno.com/" target="_blank" rel="noopener">voevodyno.com ↗</a></td>
           <td class="place">с. Тур'я Пасіка, біля Перечина<span class="region">Закарпатська обл.</span></td>
           <td>Family Luxury, 10 600 ₴</td>
           <td class="num">74 200</td>
@@ -203,7 +206,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Найближче: Перечин, Ужгород (~50 км)</span></div></td>
         </tr>
         <tr>
-          <td class="name">Verkhovyna Resort <small>5*, Medical &amp; Wellness</small></td>
+          <td class="name">Verkhovyna Resort <small>5*, Medical &amp; Wellness</small><a class="site" href="https://verkhovyna-resort.com/" target="_blank" rel="noopener">verkhovyna-resort.com ↗</a></td>
           <td class="place">с. Кам'яниця, ~15 км від Ужгорода<span class="region">Закарпатська обл.</span></td>
           <td>2 номери: Standard 7 500 ₴ + Twin 6 500 ₴</td>
           <td class="num">98 000<span class="extra">+ дод. ліжко</span></td>
@@ -216,7 +219,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Найближче: Ужгород (~15 км), багато станцій</span></div></td>
         </tr>
         <tr>
-          <td class="name">Rikka Khust <small>Standard + Improved</small></td>
+          <td class="name">Rikka Khust <small>Standard + Improved</small><a class="site" href="https://rikka-khust.com/" target="_blank" rel="noopener">rikka-khust.com ↗</a></td>
           <td class="place">м. Хуст<span class="region">Закарпатська обл.</span></td>
           <td>Standard (2 особи) 7 000 ₴ + Improved (3 особи) 7 700 ₴</td>
           <td class="num">102 900</td>
@@ -229,7 +232,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Місто Хуст. Безкоштовний паркінг, про зарядку питати</span></div></td>
         </tr>
         <tr>
-          <td class="name">TAOR Karpaty <small>Resort &amp; Spa</small></td>
+          <td class="name">TAOR Karpaty <small>Resort &amp; Spa</small><a class="site" href="https://www.booking.com/hotel/ua/taor.html" target="_blank" rel="noopener">Booking.com ↗</a></td>
           <td class="place">с. Ластівка, біля Східниці<span class="region">Львівська обл.</span></td>
           <td>Великий котедж: 3 спальні, 150 м², до 6 осіб</td>
           <td class="num">85–118 тис.</td>
@@ -242,7 +245,7 @@ footer { font-size: 12px; color: var(--muted); }
           <td class="ev"><div class="pool"><span class="pill warn">Не підтверджено</span><span>Найближче: Східниця. За Booking.com зарядка є в Apartel Skhidnytsya</span></div></td>
         </tr>
         <tr>
-          <td class="name">Rikka Khust <small>Family Luxury</small></td>
+          <td class="name">Rikka Khust <small>Family Luxury</small><a class="site" href="https://rikka-khust.com/" target="_blank" rel="noopener">rikka-khust.com ↗</a></td>
           <td class="place">м. Хуст<span class="region">Закарпатська обл.</span></td>
           <td>1 люкс з балконом на 5–6 осіб, 17 900 ₴</td>
           <td class="num">125 300</td>
