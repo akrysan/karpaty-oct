@@ -38,7 +38,7 @@
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
-.wrap { max-width: 1280px; margin: 0 auto; padding-inline: 16px; padding-block: 32px 48px; display: grid; gap: 28px; }
+.wrap { max-width: none; margin: 0; padding-inline: clamp(16px, 3vw, 48px); padding-block: 32px 48px; display: grid; gap: 28px; }
 header { display: grid; gap: 8px; }
 .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
 h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 4vw, 36px); line-height: 1.15; margin: 0; text-wrap: balance; }
