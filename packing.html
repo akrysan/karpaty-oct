@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Збори в Карпати</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;600;700&display=swap">
+<style>
+/* Layout: header with progress, then category blocks in a responsive grid; each item is a tappable row. */
+:root {
+  --bg: #f2f5f3;
+  --surface: #ffffff;
+  --fg: #18221d;
+  --muted: #5a6b62;
+  --line: #d6dfd9;
+  --accent: #2c6a4c;
+  --accent-soft: #e1eee6;
+  --warm: #a8670f;
+  --font-display: "Unbounded", "Manrope", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111814; --surface: #18211c; --fg: #e4ece7; --muted: #95a89d; --line: #2a3830;
+    --accent: #7cc39c; --accent-soft: #1e3328; --warm: #e3a64a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111814; --surface: #18211c; --fg: #e4ece7; --muted: #95a89d; --line: #2a3830;
+  --accent: #7cc39c; --accent-soft: #1e3328; --warm: #e3a64a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.back { font-size: 13px; font-weight: 600; color: var(--accent); }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; display: grid; gap: 24px; max-width: 1400px; margin: 0 auto; }
+header { display: grid; gap: 10px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.15; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-weight: 500; font-size: 16px; margin: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+h2 .count { font-family: var(--font-body); font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lede { color: var(--muted); max-width: 68ch; margin: 0; }
+.trip { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--accent-soft); border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600; }
+.progress { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.bar { flex: 1 1 220px; height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s; }
+.progress output { font-weight: 700; font-variant-numeric: tabular-nums; }
+button { font: inherit; font-weight: 700; border: 1px solid var(--line); color: var(--muted); background: transparent; border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+button:hover { color: var(--fg); border-color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; align-items: start; }
+section.cat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; min-width: 0; }
+section.cat.thermal { border-color: var(--warm); }
+.cat p.hint { margin: 0; font-size: 13px; color: var(--muted); }
+ul.items { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+ul.items label { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; padding: 6px 4px; border-radius: 6px; cursor: pointer; }
+ul.items label:hover { background: var(--accent-soft); }
+ul.items input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--accent); }
+ul.items input:checked + span { color: var(--muted); text-decoration: line-through; }
+ul.items small { display: block; color: var(--muted); font-size: 12.5px; }
+ul.items input:checked + span small { text-decoration: none; }
+input:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.warn { background: var(--surface); border: 1px solid var(--warm); border-radius: 10px; padding: 16px; display: grid; gap: 8px; }
+.warn ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+footer { font-size: 12px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="back" href="./">← Порівняння курортів</a>
+    <span class="eyebrow">Що взяти з собою</span>
+    <h1>Збори в Карпати</h1>
+    <p class="lede">4 дорослих і дитина 14 років. Спершу 4 ночі в SPA-готелі, потім 2 ночі в готелі з гарячими джерелами. Кінець жовтня, подорож на електромобілі. Позначки зберігаються лише у вашому браузері.</p>
+    <div class="trip">
+      <span class="chip">4 ночі — SPA-готель</span>
+      <span class="chip">2 ночі — гарячі джерела</span>
+      <span class="chip">0…+12 °C, дощ, туман</span>
+    </div>
+    <div class="progress">
+      <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+      <output id="total">0 з 0</output>
+      <button id="reset" type="button">Зняти всі позначки</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="cat">
+      <h2>Документи і гроші <span class="count"></span></h2>
+      <ul class="items">
+        <li><label><input type="checkbox" id="doc-ids"><span>Паспорти або ID-картки дорослих</span></label></li>
+        <li><label><input type="checkbox" id="doc-teen"><span>ID-картка для 14-річного<small>З 14 років обов'язкова. Або свідоцтво про народження</small></span></label></li>
+        <li><label><input type="checkbox" id="doc-mil"><span>Військово-облікові документи<small>Чоловікам 18–60 років, або застосунок «Резерв+»</small></span></label></li>
+        <li><label><input type="checkbox" id="doc-book"><span>Підтвердження бронювань обох готелів<small>Скріншоти на випадок, якщо не буде зв'язку</small></span></label></li>
+        <li><label><input type="checkbox" id="doc-cash"><span>Картки і готівка<small>У горах термінали можуть не працювати під час вимкнень світла</small></span></label></li>
+        <li><label><input type="checkbox" id="doc-med"><span>Медичні довідки, якщо плануєте процедури</span></label></li>
+      </ul>
+    </section>
+
+    <section class="cat">
+      <h2>Басейни і spa <span class="count"></span></h2>
+      <p class="hint">Для обох готелів.</p>
+      <ul class="items">
+        <li><label><input type="checkbox" id="spa-swim"><span>По 2 купальники чи плавки на людину<small>Мокрі за ніч не висихають</small></span></label></li>
+        <li><label><input type="checkbox" id="spa-cap"><span>Шапочки для плавання<small>У багатьох критих басейнах обов'язкові</small></span></label></li>
+        <li><label><input type="checkbox" id="spa-slip"><span>Гумові капці з неслизькою підошвою</span></label></li>
+        <li><label><input type="checkbox" id="spa-robe"><span>Халати або великі рушники<small>Спитайте, чи готель видає свої</small></span></label></li>
+        <li><label><input type="checkbox" id="spa-bag"><span>Сумка або пакети для мокрих речей</span></label></li>
+        <li><label><input type="checkbox" id="spa-water"><span>Пляшки для води<small>У гарячій воді та саунах швидко зневоднюєшся</small></span></label></li>
+        <li><label><input type="checkbox" id="spa-goggles"><span>Окуляри для плавання</span></label></li>
+      </ul>
+    </section>
+
+    <section class="cat thermal">
+      <h2>Гарячі джерела <span class="count"></span></h2>
+      <p class="hint">Додатково для останніх 2 ночей.</p>
+      <ul class="items">
+        <li><label><input type="checkbox" id="th-hat"><span>Шапка, яку не шкода намочити<small>Для відкритих басейнів у холод: тілу тепло, голова мерзне</small></span></label></li>
+        <li><label><input type="checkbox" id="th-flip"><span>Шльопанці, щоб дійти до відкритих басейнів</span></label></li>
+        <li><label><input type="checkbox" id="th-silver"><span>Зняти срібні прикраси<small>Мінеральна вода може їх затемнити</small></span></label></li>
+        <li><label><input type="checkbox" id="th-hair"><span>Шампунь і бальзам або маска для волосся<small>Мінеральна вода сушить волосся</small></span></label></li>
+        <li><label><input type="checkbox" id="th-cream"><span>Зволожувальний крем для тіла</span></label></li>
+        <li><label><input type="checkbox" id="th-old"><span>Старий купальник<small>Мінеральна вода може зіпсувати тканину</small></span></label></li>
+      </ul>
+    </section>
+
+    <section class="cat">
+      <h2>Одяг <span class="count"></span></h2>
+      <ul class="items">
+        <li><label><input type="checkbox" id="cl-rain"><span>Дощовики або куртки з мембраною</span></label></li>
+        <li><label><input type="checkbox" id="cl-layers"><span>Теплі шари: фліс, светри, термобілизна</span></label></li>
+        <li><label><input type="checkbox" id="cl-hat"><span>Шапки, рукавиці, шарфи</span></label></li>
+        <li><label><input type="checkbox" id="cl-boots"><span>Взуття для прогулянок, що не промокає</span></label></li>
+        <li><label><input type="checkbox" id="cl-shoes"><span>Змінне взуття</span></label></li>
+        <li><label><input type="checkbox" id="cl-hotel"><span>Зручний одяг для готелю та ресторану</span></label></li>
+        <li><label><input type="checkbox" id="cl-socks"><span>Шкарпетки з запасом</span></label></li>
+      </ul>
+    </section>
+
+    <section class="cat">
+      <h2>Електромобіль <span class="count"></span></h2>
+      <ul class="items">
+        <li><label><input type="checkbox" id="ev-cable"><span>Портативний зарядний кабель на розетку 220 В</span></label></li>
+        <li><label><input type="checkbox" id="ev-adapter"><span>Перехідник Type 2 → GB/T (AC)<small>Якщо порт у машини GB/T</small></span></label></li>
+        <li><label><input type="checkbox" id="ev-apps"><span>Застосунки для зарядки з прив'язаною карткою</span></label></li>
+        <li><label><input type="checkbox" id="ev-charge"><span>Зарядитися до 80–100% перед горами<small>В Ужгороді, Хусті, Дрогобичі чи Стрию</small></span></label></li>
+        <li><label><input type="checkbox" id="ev-ask"><span>Спитати в готелях про зарядку чи розетку на парковці</span></label></li>
+      </ul>
+    </section>
+
+    <section class="cat">
+      <h2>Безпека і світло <span class="count"></span></h2>
+      <ul class="items">
+        <li><label><input type="checkbox" id="sf-power"><span>Павербанки, по одному на кожного</span></label></li>
+        <li><label><input type="checkbox" id="sf-light"><span>Ліхтарики або налобні ліхтарі</span></label></li>
+        <li><label><input type="checkbox" id="sf-maps"><span>Офлайн-мапи на телефонах</span></label></li>
+        <li><label><input type="checkbox" id="sf-alert"><span>Застосунок з повітряними тривогами<small>І дізнатися, де в готелі укриття</small></span></label></li>
+        <li><label><input type="checkbox" id="sf-chargers"><span>Зарядки та подовжувач для телефонів<small>Не для машини</small></span></label></li>
+      </ul>
+    </section>
+
+    <section class="cat">
+      <h2>Аптечка <span class="count"></span></h2>
+      <ul class="items">
+        <li><label><input type="checkbox" id="md-own"><span>Ліки, які хтось п'є постійно</span></label></li>
+        <li><label><input type="checkbox" id="md-pain"><span>Знеболювальне і жарознижувальне</span></label></li>
+        <li><label><input type="checkbox" id="md-cold"><span>Засоби від застуди, горла і нежитю</span></label></li>
+        <li><label><input type="checkbox" id="md-stomach"><span>Засоби для шлунка, сорбент</span></label></li>
+        <li><label><input type="checkbox" id="md-plaster"><span>Пластирі, антисептик</span></label></li>
+        <li><label><input type="checkbox" id="md-motion"><span>Засоби від укачування<small>Для гірських серпантинів</small></span></label></li>
+        <li><label><input type="checkbox" id="md-allergy"><span>Протиалергічні ліки</span></label></li>
+      </ul>
+    </section>
+
+    <section class="cat">
+      <h2>Дозвілля <span class="count"></span></h2>
+      <ul class="items">
+        <li><label><input type="checkbox" id="fun-head"><span>Навушники, книжки</span></label></li>
+        <li><label><input type="checkbox" id="fun-games"><span>Настільні або карткові ігри на вечори</span></label></li>
+        <li><label><input type="checkbox" id="fun-bag"><span>Невеликий рюкзак для прогулянок</span></label></li>
+        <li><label><input type="checkbox" id="fun-thermos"><span>Термос для чаю</span></label></li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="warn">
+    <h2>У гарячих джерелах</h2>
+    <ul>
+      <li>Сидіть у гарячій воді не довше 15–20 хвилин за раз, потім відпочиньте.</li>
+      <li>Не заходьте в термальну воду одразу після їжі або алкоголю.</li>
+      <li>Якщо хтось має проблеми з тиском, серцем чи вагітність, спершу порадьтеся з лікарем.</li>
+    </ul>
+  </section>
+
+  <footer>Список загальний. Перевірте, що готелі видають самі (халати, рушники, капці), щоб не брати зайвого.</footer>
+</div>
+
+<script>
+(function () {
+  var KEY = 'karpaty-pack-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('ul.items input[type=checkbox]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+  boxes.forEach(function (b) { if (saved[b.id]) b.checked = true; });
+
+  function update() {
+    var done = 0;
+    boxes.forEach(function (b) { if (b.checked) done++; });
+    document.getElementById('total').textContent = done + ' з ' + boxes.length;
+    document.getElementById('bar').style.width = (boxes.length ? done / boxes.length * 100 : 0) + '%';
+    document.querySelectorAll('section.cat').forEach(function (s) {
+      var bs = s.querySelectorAll('input[type=checkbox]'), d = 0;
+      bs.forEach(function (b) { if (b.checked) d++; });
+      var c = s.querySelector('.count'); if (c) c.textContent = d + '/' + bs.length;
+    });
+  }
+  function save() {
+    var state = {};
+    boxes.forEach(function (b) { if (b.checked) state[b.id] = 1; });
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  boxes.forEach(function (b) { b.addEventListener('change', function () { save(); update(); }); });
+
+  var reset = document.getElementById('reset'), armed = false, timer;
+  reset.addEventListener('click', function () {
+    if (!armed) {
+      armed = true; reset.textContent = 'Натисніть ще раз, щоб зняти';
+      timer = setTimeout(function () { armed = false; reset.textContent = 'Зняти всі позначки'; }, 3000);
+      return;
+    }
+    clearTimeout(timer); armed = false; reset.textContent = 'Зняти всі позначки';
+    boxes.forEach(function (b) { b.checked = false; });
+    save(); update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>
